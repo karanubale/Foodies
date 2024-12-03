@@ -40,8 +40,8 @@ const StoreContextProvider = (props) => {
         //     console.log("Food list is still loading...");
         //     return totalAmout;
         // }
-        console.log(food_list);
-        console.log(cartItems);
+        // console.log(food_list);
+        // console.log(cartItems);
         for (const item in cartItems) {
 
             if (cartItems[item] > 0) {

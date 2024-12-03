@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
+    const navigate=useNavigate();
     const { getTotalCartAmount, token, food_list, cartItems, url } = useContext(StoreContext);
     const [data, setData] = useState({
         firstName: "",
@@ -42,16 +43,17 @@ const PlaceOrder = () => {
         // console.log(orderData);
         let response = await axios.post(url + "/api/order/place", orderData, { headers: { token } });
         // console.log(response.data.success);
+
         if (response.data.success) {
-            const { session_url } = response.data;
-            window.location.replace(session_url);
+            navigate("/myorder");
+            // const { session_url } = response.data;
         }
         else {
-            console.log(response)
+            // console.log(response)
             alert("Error");
         }
     }
-    const navigate=useNavigate();
+  
 
     useEffect(()=>{
         if(!token)
@@ -105,7 +107,7 @@ const PlaceOrder = () => {
                             <p>&#x20b9; {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</p>
                         </div>
                     </div>
-                    <button type='submit' >Proceed to payment</button>
+                    <button type='submit'>Proceed to payment</button>
 
                 </div>
             </div>

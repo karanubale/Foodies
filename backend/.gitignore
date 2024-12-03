@@ -1,4 +1,4 @@
 node_modules
 assests
 
-.env
+/.env

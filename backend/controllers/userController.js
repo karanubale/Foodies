@@ -51,10 +51,10 @@ const registerUser = async (req, res) => {
             password: hashedPassword,
         })
         const user = await newUser.save();
-        console.log("text");
+        // console.log("text");
         const token = createToken(user._id);
         res.json({ success: true, token: token });
-        console.log("text");
+        // console.log("text");
     }
     catch (error) {
         console.log(error);
